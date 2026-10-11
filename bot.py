@@ -17,7 +17,8 @@ AFK_CHANNEL_ID = 1557168763189596270
 
 @bot.event
 async def on_ready():
-  print(f"Logged in as {bot.user.name}")
+  print(f"Logged in as {bot.user.name} (ID: {bot.user.id})")
+  print("Bot is ready and online!")
 
 
 @bot.event
@@ -33,7 +34,7 @@ async def on_voice_state_update(member, before, after):
         print(f"Failed to mute {member.name}: {e}")
 
 
-# --- سيرفر الـ Flask لمنع البوت من الانفصال (Keep-Alive) ---
+# --- سيرفر الـ Flask الوهمي (Keep-Alive) ---
 app = Flask("")
 
 
@@ -43,15 +44,17 @@ def home():
 
 
 def run():
+  # Render يتطلب استخدام المنفذ 8080
   app.run(host="0.0.0.0", port=8080)
 
 
 def keep_alive():
   t = threading.Thread(target=run)
+  t.daemon = True
   t.start()
 
 
-# تشغيل السيرفر الوهمي أولاً ثم تشغيل البوت بالتوكن الخاص بك
+# تشغيل السيرفر أولاً ثم البوت بالتوكن الجديد
 if __name__ == "__main__":
   keep_alive()
-  bot.run("MTU1ODg2ODIyMDExMzQ1NzIwMw.GAS9im.hsEQnDb5e5DCXOsSUz4cUSOIrJ3ggYx2AIr2-k")
+  bot.run("MTU1ODg2ODIyMDExMzQ1NzIwMw.G253sa.wfuWNtPIPoSMKtBqu4BPqUCKZsbjlaHd89_xP0")
