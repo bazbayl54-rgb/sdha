@@ -54,7 +54,8 @@ def keep_alive():
   t.start()
 
 
-# تشغيل السيرفر أولاً ثم البوت بالتوكن الجديد
+# تشغيل السيرفر الباكب والبوت بأمان
 if __name__ == "__main__":
   keep_alive()
-  bot.run("MTU1ODg2ODIyMDExMzQ1NzIwMw.G253sa.wfuWNtPIPoSMKtBqu4BPqUCKZsbjlaHd89_xP0")
+  token = os.getenv("MTU1ODg2ODIyMDExMzQ1NzIwMw.G253sa.wfuWNtPIPoSMKtBqu4BPqUCKZsbjlaHd89_xP0")
+  bot.run(token)
